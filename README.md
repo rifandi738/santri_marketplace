@@ -107,13 +107,18 @@ Chromium dicari otomatis (cache Playwright atau env `CHROMIUM_PATH`); bila belum
 
 ## Deploy ke Vercel
 
-Aplikasi ini situs statis tanpa build, jadi tidak ada pengaturan khusus. [.vercelignore](.vercelignore) mengecualikan `tests/`, `tools/`, dan `package.json` dari unggahan,
-sehingga Vercel menyajikan folder ini apa adanya (routing hash tidak membutuhkan aturan rewrite).
+Situs produksi: **https://pde-marketplace.vercel.app** (proyek Vercel `pde-marketplace`). Repositori ini terhubung ke proyek itu:
+push ke `main` dideploy otomatis ke produksi, dan push ke branch lain mendapat URL pratinjau.
+
+Aplikasi ini situs statis tanpa build, jadi tidak ada pengaturan khusus (routing hash tidak membutuhkan aturan rewrite).
+Untuk deploy manual dari komputer lokal:
 
 ```bash
 npx vercel login        # sekali saja
 npx vercel --prod       # publikasi ke produksi
 ```
+
+[.vercelignore](.vercelignore) mengecualikan `tests/`, `tools/`, dan `package.json` dari unggahan deploy manual itu.
 
 ## Keterbatasan demo
 
