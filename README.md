@@ -80,13 +80,13 @@ hak akses) dan dapat diuji tanpa browser. Untuk memakai backend nyata, ganti fun
 
 ### Mengubah merek, data, dan gambar
 
-- **Nama/logo/kontak**: `js/config.js` (`BRAND`) dan `images/brand/logo.svg`. **Warna & font**: variabel di `css/tokens.css`.
+- **Nama/logo/kontak/kredit footer**: `js/config.js` (`BRAND`, termasuk `builtBy`) dan `images/brand/logo.svg`. **Warna & font**: variabel di `css/tokens.css`.
 - **Produk, kategori, toko**: `js/data/products.js`, `categories.js`, `sellers.js`. Setelah mengubahnya naikkan `CFG.dataVersion` di `js/config.js`
   agar browser yang pernah membuka aplikasi memuat data baru (data lama dibuang).
 - **Gambar**: dipetakan di `js/data/images.js` (satu berkas, terpisah dari komponen UI). Semua gambar sekarang **ilustrasi sintetis buatan sendiri**
   (bukan foto) yang dihasilkan `tools/gen` — tidak ada masalah lisensi. Untuk memakai foto asli, letakkan berkas di `images/` lalu ubah path di `images.js`.
   Untuk membuat ulang ilustrasi: `npm run gen:images` (spesifikasi per produk di `tools/gen/specs.mjs`).
-- Font (Fraunces, Plus Jakarta Sans) dimuat dari Google Fonts dengan fallback sistem; aplikasi tetap berfungsi offline.
+- Font **PT Sans** dimuat dari Google Fonts (tautan di `index.html`) dengan fallback sistem; aplikasi tetap berfungsi offline. Daftar font ada di `css/tokens.css` (`--font`, `--font-d`).
 
 ## Pengujian
 

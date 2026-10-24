@@ -75,7 +75,7 @@ function footer() {
   <div><h2 class="fh">${BRAND.name}</h2><a href="#/tentang">Tentang kami</a><a href="#/toko">Toko santri</a><a href="#/buka-toko">Jual di ${BRAND.name}</a><a href="#/lacak">Lacak pesanan</a></div>
   <div><h2 class="fh">Bantuan</h2><a href="#/bantuan">Pertanyaan umum</a><a href="#/kontak">Hubungi kami</a><a href="#/syarat">Syarat & ketentuan</a><a href="#/privasi">Kebijakan privasi</a><a href="#/akun">Akun saya</a></div>
  </div>
- <div class="bottom"><span>© ${new Date().getFullYear()} ${BRAND.name}. Prototipe: toko, produk, dan transaksi adalah data demo.</span><span>Data tersimpan di browser ini saja · Tidak ada pembayaran sungguhan</span></div></div></footer>`;
+ <div class="bottom"><span>© ${new Date().getFullYear()} ${BRAND.name}. Prototipe: toko, produk, dan transaksi adalah data demo.</span><span>Data tersimpan di browser ini saja · Tidak ada pembayaran sungguhan</span><span class="credit">Prototype by <b>${BRAND.builtBy}</b></span></div></div></footer>`;
 }
 
 /* halaman bantuan: tautan yang memerlukan login */

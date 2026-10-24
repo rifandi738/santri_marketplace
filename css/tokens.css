@@ -13,8 +13,8 @@
  --sh-sm:0 1px 2px rgba(7,59,44,.06),0 2px 8px rgba(7,59,44,.05);
  --sh:0 2px 4px rgba(7,59,44,.05),0 16px 32px -18px rgba(7,59,44,.32);
  --sh-lg:0 12px 48px -12px rgba(7,59,44,.4);
- --font-d:"Fraunces",Georgia,"Times New Roman",serif;
- --font:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+ --font-d:"PT Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+ --font:"PT Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
  --maxw:1240px;--gutter:clamp(16px,4vw,32px);
  --focus:#167A57;
  --star:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%230F5C42' stroke-width='1.6'><polygon points='60,24 70.5,34.5 85.5,34.5 85.5,49.5 96,60 85.5,70.5 85.5,85.5 70.5,85.5 60,96 49.5,85.5 34.5,85.5 34.5,70.5 24,60 34.5,49.5 34.5,34.5 49.5,34.5'/><path d='M0 -14L14 0 0 14-14 0ZM120 -14L134 0 120 14 106 0ZM0 106L14 120 0 134-14 120ZM120 106L134 120 120 134 106 120Z'/></g></svg>");

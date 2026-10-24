@@ -7,6 +7,7 @@ const BRAND = {
  tagline: 'Marketplace khusus santri',
  desc: 'Marketplace Pesantren Digital Ecosystem (PDE): tempat santri, alumni, dan UMKM pesantren menjual dan membeli kebutuhan sehari-hari.',
  logo: 'images/brand/logo.svg',
+ builtBy: 'FIDI IT KREATIF',          // kredit pembuat prototipe (footer)
  email: 'halo@pde-marketplace.example'
 };
 const CFG = {

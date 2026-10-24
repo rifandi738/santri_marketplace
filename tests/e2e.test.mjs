@@ -33,6 +33,18 @@ describe('beranda & navigasi', () => {
   await page.waitForFunction(() => { const r = document.getElementById('kategori').getBoundingClientRect(); return r.top < 200 && r.top > -50; }, null, {timeout: 3000});
  }));
 
+ test('font PT Sans dan kredit pembuat tampil di footer semua halaman publik', () => withPage({}, async page => {
+  const family = sel => page.evaluate(s => getComputedStyle(document.querySelector(s)).fontFamily, sel);
+  assert.match(await family('body'), /^"?PT Sans"?,/);
+  assert.match(await family('h1'), /^"?PT Sans"?,/);
+  const fontLink = await page.evaluate(() => decodeURIComponent(document.querySelector('link[rel=stylesheet][href*="fonts.googleapis.com"]').href));
+  assert.match(fontLink, /family=PT Sans|family=PT\+Sans/); assert.doesNotMatch(fontLink, /Fraunces|Jakarta/);
+  for (const hash of ['/', '/produk', '/bantuan', '/keranjang']) {
+   await go(page, hash);
+   assert.equal((await page.locator('.foot .credit').innerText()).replace(/\s+/g, ' ').trim(), 'Prototype by FIDI IT KREATIF', hash);
+  }
+ }));
+
  test('setiap ubin kategori menyaring katalog sesuai kategori', () => withPage({}, async page => {
   const expected = await state(page, 'Object.fromEntries(CATS.map(c => [c.id, S.products.filter(p => p.cat === c.id).length]))');
   for (const [id, n] of Object.entries(expected)) {

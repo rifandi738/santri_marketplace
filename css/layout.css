@@ -101,6 +101,7 @@
 .news input::placeholder{color:#9FBFAE}
 .news input:focus{outline:2px solid #fff;outline-offset:2px}
 .foot .bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:36px;padding-top:20px;font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px}
+.foot .credit{flex:1 0 100%;text-align:center;margin-top:6px;letter-spacing:.03em}.foot .credit b{color:#fff;letter-spacing:.08em}
 @media (max-width:860px){.foot .cols{grid-template-columns:1fr 1fr}.fcol-brand{grid-column:1/-1}}
 @media (max-width:480px){.foot .cols{grid-template-columns:1fr}}
 
