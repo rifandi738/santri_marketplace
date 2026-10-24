@@ -1,0 +1,8 @@
+# Hanya aset statis yang dipublikasikan. Berkas pengembangan dikecualikan;
+# tanpa package.json Vercel memperlakukan proyek ini sebagai situs statis tanpa build.
+node_modules
+tests
+tools
+package.json
+package-lock.json
+README.md
