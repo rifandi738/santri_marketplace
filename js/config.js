@@ -14,6 +14,7 @@ const CFG = {
  storageKey: 'pde-marketplace-demo-v',
  sessionKey: 'pde-marketplace-session',
  payWindowHours: 24,             // batas waktu pembayaran
+ orderPrefix: 'PDE',             // awalan nomor pesanan: PDE-YYYYMMDD-XXXX
  lowStock: 5,                    // stok <= angka ini ditandai "Sisa N"
  perPage: 12,                    // produk per halaman katalog
  maxQty: 99,                     // batas atas kuantitas per baris keranjang

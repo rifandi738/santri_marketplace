@@ -82,7 +82,7 @@ function seed() {
   const lines = cartLines(items.map(([id, vid, qty]) => ({id, vid, qty})));
   const created = now - daysAgo * DAY;
   const ymd = new Date(created); const stamp = ymd.getFullYear() + String(ymd.getMonth() + 1).padStart(2, '0') + String(ymd.getDate()).padStart(2, '0');
-  const o = makeOrder({id: `SM-${stamp}-${(46656 + 123 + i * 997).toString(36).toUpperCase()}`, user, addr: user.addresses[0] || null, lines, payMethod: pay, created});
+  const o = makeOrder({id: `${CFG.orderPrefix}-${stamp}-${(46656 + 123 + i * 997).toString(36).toUpperCase()}`, user, addr: user.addresses[0] || null, lines, payMethod: pay, created});
   if (status === 'kedaluwarsa') { o.pay = 'expired'; o.parcels.forEach(pc => setParcel(pc, 'Dibatalkan', 'Batas waktu pembayaran habis', created + CFG.payWindowHours * HOUR)); }
   else if (status !== 'menunggu') {
    o.pay = 'paid'; o.paidAt = created + 20 * 60 * 1000;

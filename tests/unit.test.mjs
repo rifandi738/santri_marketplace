@@ -250,7 +250,7 @@ describe('pesanan end-to-end', () => {
   e.run("addToCart('kt-01', null, 3)"); e.run("addToCart('bm-01', 'v2', 1)");
   const r = e.j("createOrder({user: me(), addr: me().addresses[0], lines: cartLines(), choice: {}, voucher: 'SANTRI10', notes: {}, payMethod: 'QRIS', fromCart: true})");
   assert.equal(r.ok, true, r.msg);
-  assert.match(r.order.id, /^SM-\d{8}-[A-Z0-9]{4}$/);
+  assert.match(r.order.id, /^PDE-\d{8}-[A-Z0-9]{4}$/);
   assert.equal(e.run("prod('kt-01').stock"), before - 3);
   assert.equal(e.run("prod('bm-01').variants.items[1].stock"), 22 - 1);
   assert.equal(e.j('S.cart').length, 0);

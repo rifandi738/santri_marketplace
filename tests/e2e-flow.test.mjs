@@ -181,7 +181,7 @@ describe('checkout', () => {
   await page.locator('[data-act=placeOrder]').dblclick();
   await page.waitForFunction(() => location.hash.startsWith('#/bayar/'), null, {timeout: 8000});
   const id = (await hashOf(page)).split('/')[2];
-  assert.match(id, /^SM-\d{8}-[A-Z0-9]{4}$/);
+  assert.match(id, /^PDE-\d{8}-[A-Z0-9]{4}$/);
   assert.equal(await state(page, 'S.orders.length'), before + 1, 'klik ganda hanya membuat satu pesanan');
   assert.equal(await state(page, "prod('kt-01').stock"), stockBefore - 2, 'stok ditahan');
   assert.equal(await cartCount(page), 0);
@@ -221,7 +221,7 @@ describe('checkout', () => {
   assert.ok(await page.locator('.ocard', {hasText: id}).isVisible());
   await go(page, '/lacak?id=' + id);
   assert.match(await page.locator('.trk-p').first().innerText(), /Dikemas penjual/);
-  await go(page, '/lacak?id=SM-00000000-NONE');
+  await go(page, '/lacak?id=PDE-00000000-NONE');
   assert.match(await page.locator('#err-id').innerText(), /tidak ditemukan/);
  }));
 

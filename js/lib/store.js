@@ -227,7 +227,7 @@ const PARCEL_FLOW = {Dikemas: ['Dikirim', 'Dibatalkan'], Dikirim: ['Selesai']};
 function newOrderId() {
  const d = new Date(), ymd = d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0');
  let id;
- do { id = `SM-${ymd}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`; } while (S.orders.some(o => o.id === id));
+ do { id = `${CFG.orderPrefix}-${ymd}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`; } while (S.orders.some(o => o.id === id));
  return id;
 }
 function makeOrder({id, user, addr, lines, choice = {}, voucher = null, notes = {}, payMethod = 'QRIS', created = Date.now()}) {
