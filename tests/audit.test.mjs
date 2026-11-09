@@ -381,12 +381,14 @@ describe('ketahanan lingkungan', () => {
 describe('gambar & kontrol bantu', () => {
  test('SEMUA gambar yang dipetakan (produk, kategori, banner, logo) benar-benar termuat di browser', () => withPage({}, async page => {
   const res = await page.evaluate(async () => {
-   const srcs = [...new Set([...Object.values(PRODUCT_IMG).flat().map(i => i.src), ...Object.values(SITE_IMG).flatMap(v => typeof v === 'string' ? [v] : Object.values(v))])];
+   // logo dibaca dari BRAND, favicon/apple-touch-icon dari <link> di index.html (bukan dari SITE_IMG)
+   const brand = [BRAND.logo, ...[...document.querySelectorAll('link[rel~=icon], link[rel=apple-touch-icon]')].map(l => l.getAttribute('href'))];
+   const srcs = [...new Set([...Object.values(PRODUCT_IMG).flat().map(i => i.src), ...Object.values(SITE_IMG).flatMap(v => typeof v === 'string' ? [v] : Object.values(v)), ...brand])];
    const bad = [];
    await Promise.all(srcs.map(src => new Promise(r => { const i = new Image(); i.onload = () => { if (!i.naturalWidth) bad.push(src); r(); }; i.onerror = () => { bad.push(src); r(); }; i.src = src; })));
    return {n: srcs.length, bad};
   });
-  assert.deepEqual(res.bad, []); assert.ok(res.n >= 189, 'jumlah gambar yang diperiksa: ' + res.n);
+  assert.deepEqual(res.bad, []); assert.ok(res.n >= 191, 'jumlah gambar yang diperiksa: ' + res.n);
  }));
  test('semua kartu produk di seluruh katalog menampilkan gambar yang sesuai (satu gambar unik per produk) tanpa yang rusak', () => withPage({}, async page => {
   const seen = new Set();

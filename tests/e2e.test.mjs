@@ -45,6 +45,19 @@ describe('beranda & navigasi', () => {
   }
  }));
 
+ test('logo merek (PNG) termuat di header dan footer; favicon dan apple-touch-icon tersedia', () => withPage({}, async page => {
+  const sels = ['.hd .logo img', '.foot .logo img'];
+  await page.waitForFunction(s => s.every(x => { const i = document.querySelector(x); return i && i.complete && i.naturalWidth > 0; }), sels);
+  for (const [src, w] of await page.evaluate(s => s.map(x => { const i = document.querySelector(x); return [i.getAttribute('src'), i.naturalWidth]; }), sels)) {
+   assert.equal(src, 'images/brand/logo.png'); assert.ok(w >= 64, 'resolusi logo terlalu kecil: ' + w);
+  }
+  for (const rel of ['icon', 'apple-touch-icon']) {
+   const hrefs = await page.evaluate(r => [...document.querySelectorAll(`link[rel="${r}"]`)].map(l => l.href), rel);
+   assert.ok(hrefs.length, 'tidak ada <link rel="' + rel + '">');
+   for (const h of hrefs) { const res = await page.request.get(h); assert.equal(res.status(), 200, h); assert.match(res.headers()['content-type'], /^image\/png/, h); }
+  }
+ }));
+
  test('setiap ubin kategori menyaring katalog sesuai kategori', () => withPage({}, async page => {
   const expected = await state(page, 'Object.fromEntries(CATS.map(c => [c.id, S.products.filter(p => p.cat === c.id).length]))');
   for (const [id, n] of Object.entries(expected)) {

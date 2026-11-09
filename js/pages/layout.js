@@ -22,7 +22,7 @@ function accountMenu(u) {
   ...(u.shopId ? [['#/penjual', 'store', 'Dashboard toko']] : u.role !== 'admin' ? [['#/buka-toko', 'store', 'Buka toko']] : []),
   ...(u.role === 'admin' ? [['#/admin', 'chart', 'Panel admin']] : [])
  ];
- return `<div class="menu-wrap acct"><button class="acct-btn" data-act="menu" data-menu="acct" aria-expanded="false" aria-controls="menu-acct">${avatar(u.name, '#0F6B4B', 'sm')}<span class="sr">Menu akun </span><span class="acct-n">${esc(u.name.split(' ')[0])}</span>${icon('down', 'chev')}</button>
+ return `<div class="menu-wrap acct"><button class="acct-btn" data-act="menu" data-menu="acct" aria-expanded="false" aria-controls="menu-acct">${avatar(u.name, '#0255A6', 'sm')}<span class="sr">Menu akun </span><span class="acct-n">${esc(u.name.split(' ')[0])}</span>${icon('down', 'chev')}</button>
  <div class="menu right" id="menu-acct" hidden><div class="menu-h"><b>${esc(u.name)}</b><span class="muted small">${esc(u.email)}</span></div>${items.map(i => `<a href="${i[0]}" role="menuitem">${icon(i[1])}${i[2]}</a>`).join('')}<button data-act="logout" role="menuitem">${icon('logout')}Keluar</button></div></div>`;
 }
 

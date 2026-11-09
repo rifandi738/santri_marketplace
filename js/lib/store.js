@@ -424,7 +424,7 @@ function openShop(data) {
  if (S.shops.some(s => norm(s.name) === norm(data.name))) return fail('Nama toko sudah dipakai. Pilih nama lain.');
  let id = norm(data.name).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'toko'; const base = id; let n = 2;
  while (S.shops.some(s => s.id === id)) id = base + '-' + n++;
- const sh = {id, name: data.name.trim(), type: data.type, city: data.city.trim(), prov: data.prov, since: new Date().getFullYear(), color: '#0F6B4B', owner: u.name, desc: data.desc.trim(), active: true};
+ const sh = {id, name: data.name.trim(), type: data.type, city: data.city.trim(), prov: data.prov, since: new Date().getFullYear(), color: '#0255A6', owner: u.name, desc: data.desc.trim(), active: true};
  S.shops.push(sh); u.shopId = id; save();
  return {ok: true, shop: sh};
 }

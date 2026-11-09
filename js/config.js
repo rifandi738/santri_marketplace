@@ -1,12 +1,12 @@
 /* PDE Marketplace - konfigurasi merek dan konstanta bisnis.
-   Nama merek dan angka bisnis cukup diubah di sini. Warna ada di css/tokens.css,
-   logo ada di images/brand/logo.svg. Semua halaman membaca nilai dari file ini. */
+   Nama merek dan angka bisnis cukup diubah di sini. Warna ada di css/tokens.css, logo di images/brand/
+   (dibuat dari tools/brand/logo-source.png lewat `npm run gen:logo`). Semua halaman membaca nilai dari file ini. */
 const BRAND = {
  name: 'PDE Marketplace',
  fullName: 'Pesantren Digital Ecosystem',
  tagline: 'Marketplace khusus santri',
  desc: 'Marketplace Pesantren Digital Ecosystem (PDE): tempat santri, alumni, dan UMKM pesantren menjual dan membeli kebutuhan sehari-hari.',
- logo: 'images/brand/logo.svg',
+ logo: 'images/brand/logo.png',
  builtBy: 'FIDI IT KREATIF',          // kredit pembuat prototipe (footer)
  email: 'halo@pde-marketplace.example'
 };

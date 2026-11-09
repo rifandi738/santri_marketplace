@@ -141,7 +141,7 @@ const chk = (name, label, checked = false, extra = '') => `<label class="chk"><i
 const crumbs = a => `<nav class="crumbs" aria-label="Jejak halaman"><ol><li><a href="#/">Beranda</a></li>${a.map(([t, h]) => `<li>${h ? `<a href="${h}">${esc(t)}</a>` : `<span aria-current="page">${esc(t)}</span>`}</li>`).join('')}</ol></nav>`;
 const empty = (ic, t, m, cta = '') => `<div class="empty">${icon(ic || 'box')}<h2 class="h3">${t}</h2><p class="muted">${m}</p>${cta}</div>`;
 const badge = (t, k = '') => `<span class="badge ${k}">${t}</span>`;
-const avatar = (name, color = '#0F6B4B', cls = '') => `<span class="avatar ${cls}" style="background:${color};color:${textOn(color)}" aria-hidden="true">${esc(initials(name))}</span>`;
+const avatar = (name, color = '#0255A6', cls = '') => `<span class="avatar ${cls}" style="background:${color};color:${textOn(color)}" aria-hidden="true">${esc(initials(name))}</span>`;
 const imgTag = (src, alt, cls = '', dim = 'width="600" height="600"') => `<img class="${cls}" src="${esc(src)}" alt="${esc(alt)}" ${dim} loading="lazy" decoding="async">`;
 const priceHtml = (p, vid, withPct = true) => {
  const price = unitPrice(p, vid), pct = discountPct(p), disc = pct && !variantOf(p, vid)?.delta;

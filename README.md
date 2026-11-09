@@ -69,9 +69,10 @@ js/data/                   categories, sellers, products, geo (wilayah & tarif),
 js/lib/                    util, password (PBKDF2), store (STATE + LOGIKA BISNIS tanpa DOM), ui (komponen)
 js/pages/                  layout, home, catalog, product, cart, checkout, orders, auth, account, dashboard, static
 js/app.js                  router, aksi (data-act), form (data-form), listener global
-images/                    ilustrasi produk/kategori/banner/logo (SVG)
+images/                    ilustrasi produk/kategori/banner (SVG); logo & favicon di images/brand/ (PNG)
 tools/serve.mjs            server statis tanpa dependensi
-tools/gen/                 generator ilustrasi (node tools/gen/index.mjs)
+tools/gen/                 generator ilustrasi (npm run gen:images)
+tools/brand/               logo sumber dari desainer + pembuat turunan logo/favicon (npm run gen:logo)
 tests/                     unit (logika domain), E2E (Playwright), audit (tautan, a11y, responsif)
 ```
 
@@ -80,11 +81,16 @@ hak akses) dan dapat diuji tanpa browser. Untuk memakai backend nyata, ganti fun
 
 ### Mengubah merek, data, dan gambar
 
-- **Nama/logo/kontak/kredit footer**: `js/config.js` (`BRAND`, termasuk `builtBy`) dan `images/brand/logo.svg`. **Warna & font**: variabel di `css/tokens.css`.
+- **Nama/kontak/kredit footer**: `js/config.js` (`BRAND`, termasuk `builtBy`).
+- **Logo**: berkas desain asli disimpan di `tools/brand/logo-source.png`. `npm run gen:logo` membuang latar putihnya lalu membuat `images/brand/logo.png`
+  (header, footer, menu), `favicon-32.png`, `icon-192.png`, dan `apple-touch-icon.png`. Untuk mengganti logo, timpa berkas sumber lalu jalankan perintah itu.
+- **Warna**: palet diambil dari logo dan didefinisikan di `css/tokens.css`: biru `--p50`…`--p900` (warna utama), cyan `--cyan`/`--cyan-l` (aksen; hanya untuk dekorasi
+  atau di atas latar gelap karena kontrasnya rendah di latar putih), dan emas `--gold`. Ilustrasi situs (hero, banner, panel masuk, ubin kategori) memakai palet
+  yang sama di `tools/gen/scenes.mjs`; gambar produk tetap memakai warna barangnya sendiri.
 - **Produk, kategori, toko**: `js/data/products.js`, `categories.js`, `sellers.js`. Setelah mengubahnya naikkan `CFG.dataVersion` di `js/config.js`
   agar browser yang pernah membuka aplikasi memuat data baru (data lama dibuang).
-- **Gambar**: dipetakan di `js/data/images.js` (satu berkas, terpisah dari komponen UI). Semua gambar sekarang **ilustrasi sintetis buatan sendiri**
-  (bukan foto) yang dihasilkan `tools/gen` — tidak ada masalah lisensi. Untuk memakai foto asli, letakkan berkas di `images/` lalu ubah path di `images.js`.
+- **Gambar**: dipetakan di `js/data/images.js` (satu berkas, terpisah dari komponen UI). Gambar produk, kategori, dan banner adalah **ilustrasi sintetis buatan sendiri**
+  (bukan foto) yang dihasilkan `tools/gen` — tidak ada masalah lisensi. Logo berasal dari berkas desain pemilik proyek. Untuk memakai foto asli, letakkan berkas di `images/` lalu ubah path di `images.js`.
   Untuk membuat ulang ilustrasi: `npm run gen:images` (spesifikasi per produk di `tools/gen/specs.mjs`).
 - Font **PT Sans** dimuat dari Google Fonts (tautan di `index.html`) dengan fallback sistem; aplikasi tetap berfungsi offline. Daftar font ada di `css/tokens.css` (`--font`, `--font-d`).
 

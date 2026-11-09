@@ -1,5 +1,6 @@
 /* Generator aset gambar PDE Marketplace.  Jalankan:  node tools/gen/index.mjs
-   Hasil: images/products|categories|site|brand/*.svg  dan  js/data/images.js (pemetaan gambar).
+   Hasil: images/products|categories|site/*.svg  dan  js/data/images.js (pemetaan gambar).
+   Logo merek (PNG) dibuat terpisah dari berkas desainer:  npm run gen:logo
    Semua gambar dibuat sendiri (ilustrasi sintetis), jadi tidak ada masalah lisensi.
    Untuk memakai foto asli: letakkan berkasnya di images/ lalu ubah js/data/images.js. */
 import fs from 'node:fs';
@@ -8,7 +9,7 @@ import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import {composeProduct} from './compose.mjs';
 import {ART} from './specs.mjs';
-import {hero, banner, categoryTile, authArt, logo, placeholder} from './scenes.mjs';
+import {hero, banner, categoryTile, authArt, placeholder} from './scenes.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const out = (rel, text) => { const p = path.join(ROOT, rel); fs.mkdirSync(path.dirname(p), {recursive: true}); fs.writeFileSync(p, text); };
@@ -49,8 +50,6 @@ put('hero', 'images/site/hero.svg', hero());
 put('authArt', 'images/site/auth-art.svg', authArt());
 for (const k of ['ongkir', 'kitab', 'asrama', 'jual']) put('banner_' + k, `images/site/banner-${k}.svg`, banner(k));
 put('placeholder', 'images/placeholder.svg', placeholder());
-put('logo', 'images/brand/logo.svg', logo());
-put('favicon', 'images/brand/favicon.svg', logo());
 const cats = {};
 for (const c of CATS) { const rel = `images/categories/${c.id}.svg`; const svg = categoryTile(c, c.tint); check(rel, svg); out(rel, svg); cats[c.id] = rel; count++; }
 

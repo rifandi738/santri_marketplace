@@ -63,8 +63,6 @@ const SITE_IMG = {
  banner_asrama: "images/site/banner-asrama.svg",
  banner_jual: "images/site/banner-jual.svg",
  placeholder: "images/placeholder.svg",
- logo: "images/brand/logo.svg",
- favicon: "images/brand/favicon.svg",
  cats: {
   kitab: "images/categories/kitab.svg",
   busana: "images/categories/busana.svg",

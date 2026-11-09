@@ -1,23 +1,25 @@
 /* PDE Marketplace - token desain, reset, dan utilitas dasar.
    Ganti warna/tipografi merek cukup di blok :root berikut. */
 :root{
- /* hijau (merek) */
- --g900:#073B2C;--g800:#0A4A34;--g700:#0F5C42;--g600:#167A57;--g500:#1E9468;--g400:#4BB88C;--g200:#BFE5D3;--g100:#E3F3EB;--g50:#F3F9F5;
- /* emas (aksen hangat) */
- --gold:#D9A93A;--gold-d:#8A6410;--gold-l:#F3DFA6;--gold-100:#FBF1D8;
+ /* biru (merek, diambil dari logo). p500 ke bawah hanya untuk garis, grafik, dan latar, bukan teks */
+ --p900:#031A49;--p800:#042E6E;--p700:#0255A6;--p600:#0966BD;--p500:#2489E3;--p400:#5AA9EC;--p200:#BCDBF7;--p100:#E2EFFC;--p50:#F2F8FE;
+ /* cyan (aksen logo): dekorasi, atau ikon/teks di atas latar gelap */
+ --cyan:#0BC5E2;--cyan-l:#8DE9F7;
+ /* emas (aksen hangat, dari logo) */
+ --gold:#E8A82E;--gold-d:#8A5E0B;--gold-l:#F6D98A;--gold-100:#FCF2D9;
  /* netral */
- --ink:#10261D;--ink-2:#2C3F36;--muted:#52645B;--line:#DCE6E0;--line-2:#EBF1ED;--bg:#FAFBF9;--white:#fff;
+ --ink:#0B1A33;--ink-2:#24365A;--muted:#4E5E78;--line:#D8E2EF;--line-2:#EAF0F8;--bg:#F7F9FC;--white:#fff;
  /* status */
  --ok:#14653F;--ok-bg:#E1F2E8;--warn:#7A5200;--warn-bg:#FBF0D5;--bad:#B3382C;--bad-bg:#FBE6E3;--info:#1A5DA6;--info-bg:#E2EEFB;
  --r-xs:6px;--r-sm:10px;--r:14px;--r-lg:20px;--pill:999px;
- --sh-sm:0 1px 2px rgba(7,59,44,.06),0 2px 8px rgba(7,59,44,.05);
- --sh:0 2px 4px rgba(7,59,44,.05),0 16px 32px -18px rgba(7,59,44,.32);
- --sh-lg:0 12px 48px -12px rgba(7,59,44,.4);
+ --sh-sm:0 1px 2px rgba(3,26,73,.06),0 2px 8px rgba(3,26,73,.05);
+ --sh:0 2px 4px rgba(3,26,73,.05),0 16px 32px -18px rgba(3,26,73,.32);
+ --sh-lg:0 12px 48px -12px rgba(3,26,73,.4);
  --font-d:"PT Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
  --font:"PT Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
  --maxw:1240px;--gutter:clamp(16px,4vw,32px);
- --focus:#167A57;
- --star:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%230F5C42' stroke-width='1.6'><polygon points='60,24 70.5,34.5 85.5,34.5 85.5,49.5 96,60 85.5,70.5 85.5,85.5 70.5,85.5 60,96 49.5,85.5 34.5,85.5 34.5,70.5 24,60 34.5,49.5 34.5,34.5 49.5,34.5'/><path d='M0 -14L14 0 0 14-14 0ZM120 -14L134 0 120 14 106 0ZM0 106L14 120 0 134-14 120ZM120 106L134 120 120 134 106 120Z'/></g></svg>");
+ --focus:#0966BD;
+ --star:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%230255A6' stroke-width='1.6'><polygon points='60,24 70.5,34.5 85.5,34.5 85.5,49.5 96,60 85.5,70.5 85.5,85.5 70.5,85.5 60,96 49.5,85.5 34.5,85.5 34.5,70.5 24,60 34.5,49.5 34.5,34.5 49.5,34.5'/><path d='M0 -14L14 0 0 14-14 0ZM120 -14L134 0 120 14 106 0ZM0 106L14 120 0 134-14 120ZM120 106L134 120 120 134 106 120Z'/></g></svg>");
  color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -26,8 +28,8 @@ body{margin:0;font-family:var(--font);font-size:16px;line-height:1.6;color:var(-
 body.no-scroll,body.modal-open{overflow:hidden}
 img{max-width:100%;display:block}
 svg{max-width:100%}
-a{color:var(--g700);text-underline-offset:3px}
-a:hover{color:var(--g900)}
+a{color:var(--p700);text-underline-offset:3px}
+a:hover{color:var(--p900)}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 h1,h2,h3,h4{font-family:var(--font-d);font-weight:700;line-height:1.2;margin:0 0 .5em;letter-spacing:-.01em;color:var(--ink)}
@@ -54,15 +56,15 @@ b,strong{font-weight:700}
 .page-pad{padding-block:72px}.page-pad-b{padding-bottom:64px}
 .stack>*+*{margin-top:16px}
 .lead{font-size:1.125rem;color:var(--ink-2);max-width:56ch}
-.big-num{font-family:var(--font-d);font-size:5rem;line-height:1;margin:0;color:var(--g700)}
+.big-num{font-family:var(--font-d);font-size:5rem;line-height:1;margin:0;color:var(--p700)}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn-row.center{justify-content:center}
 .mono{letter-spacing:.02em}
 .ic{display:inline-block;vertical-align:-.22em;width:20px;height:20px;flex:none}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--g700);background:var(--g100);padding:6px 12px;border-radius:var(--pill)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--p700);background:var(--p100);padding:6px 12px;border-radius:var(--pill)}
 .eyebrow .ic{width:16px;height:16px}
 .eyebrow.gold{background:rgba(255,255,255,.14);color:var(--gold-l)}
 .eyebrow.dark{background:var(--gold-100);color:var(--gold-d)}
-.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--g900);color:#fff;padding:10px 16px;border-radius:var(--r-sm);transition:top .15s}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--p900);color:#fff;padding:10px 16px;border-radius:var(--r-sm);transition:top .15s}
 .skip:focus{top:12px}
 :focus{outline:none}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
